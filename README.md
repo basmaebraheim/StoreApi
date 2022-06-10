@@ -141,3 +141,15 @@ price: number
 name: string
 
 add new product
+
+
+##### environmet variables
+POSTGRES_HOST=127.0.0.1
+POSTGRES_DB=stores
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=12345678
+POSTGRES_TEST_DB=postgres_test
+ENV=dev
+BCRYPT_PASSWORD=12345678
+SALT_ROUNDS=10
+TOKEN_SECRET=123
