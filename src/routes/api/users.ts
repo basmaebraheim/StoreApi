@@ -7,7 +7,7 @@ const userRoutes = express.Router()
 
 userRoutes.get('/', [verifyAuthToken], index)
 userRoutes.get('/:id', [verifyAuthToken], show)
-userRoutes.post('/', [verifyAuthToken], create)
+userRoutes.post('/', create)
 userRoutes.post('/authenticate', authenticate)
 
 
