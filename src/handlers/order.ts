@@ -4,13 +4,23 @@ import { Order, OrderStore } from '../models/order'
 const store = new OrderStore()
 
 export const index = async (req: Request, res: Response) => {
-  const orders = await store.index(req.body.user_id)
-  res.json(orders)
+  try {
+    const orders = await store.index(req.body.user_id)
+    res.json(orders)
+  } catch (err) {
+    res.status(400)
+    res.json(err)
+  }
 }
 
 export const show = async (req: Request, res: Response) => {
-  const order = await store.show(req.params.id)
-  res.json(order)
+  try {
+    const order = await store.show(req.params.id)
+    res.json(order)
+  } catch (err) {
+    res.status(400)
+    res.json(err)
+  }
 }
 
 export const create = async (req: Request, res: Response) => {
@@ -36,21 +46,21 @@ export const addProduct = async (_req: Request, res: Response) => {
   try {
     const addedProduct = await store.addProduct(quantity, orderId, productId)
     res.json(addedProduct)
-  } catch(err) {
+  } catch (err) {
     res.status(400)
     res.json(err)
   }
-} 
+}
 export const getProduct = async (_req: Request, res: Response) => {
-  const orderId: string = _req.params.id 
+  const orderId: string = _req.params.id
 
   try {
     const addedProduct = await store.getProducts(orderId)
     res.json(addedProduct)
-  } catch(err) {
+  } catch (err) {
     res.status(400)
     res.json(err)
   }
-} 
+}
 
 

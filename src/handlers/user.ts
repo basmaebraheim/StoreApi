@@ -5,13 +5,23 @@ import jwt from 'jsonwebtoken'
 const store = new UserStore()
 
 export const index = async (req: Request, res: Response) => {
-  const users = await store.index()
-  res.json(users)
+  try {
+    const users = await store.index()
+    res.json(users)
+  } catch (err) {
+    res.status(400)
+    res.json(err)
+  }
 }
 
 export const show = async (req: Request, res: Response) => {
-  const user = await store.show(req.params.id)
-  res.json(user)
+  try {
+    const user = await store.show(req.params.id)
+    res.json(user)
+  } catch (err) {
+    res.status(400)
+    res.json(err)
+  }
 }
 
 export const create = async (req: Request, res: Response) => {
